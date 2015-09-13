@@ -834,9 +834,7 @@ impl Node {
             Err(()) => Err(Syntax),
             // Step 3.
             Ok(selectors) => {
-                let root = self.ancestors().last();
-                let root = root.r().unwrap_or(self);
-                Ok(QuerySelectorIterator::new(root.traverse_preorder(), selectors))
+                Ok(QuerySelectorIterator::new(self.traverse_preorder(), selectors))
             }
         }
     }
